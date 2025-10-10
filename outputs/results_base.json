@@ -1,0 +1,77 @@
+[
+  {
+    "question": "Tell me about a time you had to learn something completely new quickly.",
+    "model": "base",
+    "answer": "I had to learn something completely new quickly."
+  },
+  {
+    "question": "Describe a time you handled a difficult situation professionally.",
+    "model": "base",
+    "answer": "I handled a difficult situation professionally."
+  },
+  {
+    "question": "Where do you see yourself in 5 years?",
+    "model": "base",
+    "answer": "san diego"
+  },
+  {
+    "question": "Tell me about a conflict you had with a coworker and how you resolved it.",
+    "model": "base",
+    "answer": "I had a disagreement with my coworker about a new job. I asked him to take a break and he said he would be fine. I told him I was going to be fired. He said he would be fine. I told him I was going to be fired. He said he would be fine. I told him I was going to be fired. He said he would be fine. I told him I was going to be fired. He said he would be fine. I told him I was going to be fired. He said he would be fine. I told him I was going to be fired. He said he would be fine. I told him I was going to be"
+  },
+  {
+    "question": "What skills do you hope to develop in your next role?",
+    "model": "base",
+    "answer": "a strong understanding of the job"
+  },
+  {
+    "question": "What's the most significant change you've had to adapt to at work?",
+    "model": "base",
+    "answer": "a new job"
+  },
+  {
+    "question": "How does this role fit into your career path?",
+    "model": "base",
+    "answer": "This position is a key part of the company’s strategy to increase its sales and increase its profitability."
+  },
+  {
+    "question": "Tell me about a time you worked well within a team.",
+    "model": "base",
+    "answer": "I worked well within a team."
+  },
+  {
+    "question": "What are your expectations from leadership in a company?",
+    "model": "base",
+    "answer": "a strong sense of direction"
+  },
+  {
+    "question": "What motivates you to come to work every day?",
+    "model": "base",
+    "answer": "a good job"
+  },
+  {
+    "question": "How do you motivate others in a leadership role?",
+    "model": "base",
+    "answer": "Identify the reasons for their motivation."
+  },
+  {
+    "question": "What tools or methods help you stay organized?",
+    "model": "base",
+    "answer": "a planner"
+  },
+  {
+    "question": "How do you build trust with new teammates?",
+    "model": "base",
+    "answer": "Build trust by sharing your experiences and feelings."
+  },
+  {
+    "question": "Describe a time you led a project or team.",
+    "model": "base",
+    "answer": "a senior level"
+  },
+  {
+    "question": "Why do you want to work at our company?",
+    "model": "base",
+    "answer": "I want to be a part of a team."
+  }
+]

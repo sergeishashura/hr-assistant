@@ -1,0 +1,7 @@
+.env
+
+.hf_cache
+
+data/
+outputs/checkpoints/
+models/
