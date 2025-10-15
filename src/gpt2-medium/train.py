@@ -12,26 +12,34 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-model_name = "microsoft/phi-2"
+print("HF_HOME =", os.getenv("HF_HOME"))
+print("TRANSFORMERS_CACHE =", os.getenv("TRANSFORMERS_CACHE"))
+print("OUTPUT_DIR =", os.getenv("OUTPUT_DIR"))
+
+device = "cpu"
+
+print(f"\n⚙️ Используем устройство: {device}")
+
+model_name = "openai-community/gpt2-medium"
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 
-device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
-print(f"Используем устройство: {device}")
-
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
-    device_map="auto",
-    torch_dtype=torch.float16 if device != "cpu" else torch.float32,
+    device_map=None, 
+    torch_dtype=torch.float32 if device != "cuda" else torch.float16,
     cache_dir=os.getenv("TRANSFORMERS_CACHE")
 )
+
+
+model.to(device)
 
 lora_config = LoraConfig(
     r=64,
     lora_alpha=16,
-    target_modules=["q_proj", "v_proj"],
+    target_modules=["c_attn", "c_proj"],
     lora_dropout=0.05,
     bias="none",
     task_type="CAUSAL_LM"
@@ -39,7 +47,13 @@ lora_config = LoraConfig(
 
 model = get_peft_model(model, lora_config)
 
-dataset = load_dataset("json", data_files="./data/kaggle_formdated_hr_dataset.json", split="train")
+
+model = get_peft_model(model, lora_config)
+
+dataset_path = os.path.join(os.path.dirname(__file__), "../../data/kaggle_formdated_hr_dataset.json")
+print(f"\n📁 Загружаем датасет: {dataset_path}")
+
+dataset = load_dataset("json", data_files=dataset_path, split="train")
 
 def preprocess(examples):
     texts = []
@@ -76,13 +90,17 @@ trainer = SFTTrainer(
         save_strategy="epoch",
         save_total_limit=2,
         fp16=True if device == "cuda" else False,
+        bf16=False,
+        optim="adamw_torch",
     ),
 )
 
+print("\n🚀 Запускаем обучение...\n")
 trainer.train()
 
 save_dir = "./models/hr-gpt-05"
 os.makedirs(save_dir, exist_ok=True)
 model.save_pretrained(save_dir)
 tokenizer.save_pretrained(save_dir)
-print(f"Модель сохранена в {save_dir}")
+
+print(f"\nМодель сохранена в {save_dir}")
