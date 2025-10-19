@@ -4,3 +4,4 @@
 
 /dataset
 outputs/
+.venv/

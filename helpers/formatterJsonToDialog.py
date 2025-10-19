@@ -1,6 +1,6 @@
 import json
 
-with open("data/drafts/hr_interview_questions_dataset.json", "r") as f:
+with open("dataset/hr_interview_questions_dataset.json", "r") as f:
     raw = json.load(f)
 
 dialogs = []
@@ -14,5 +14,5 @@ for item in raw:
     }
     dialogs.append(dialog)
 
-with open("data/kaggle_formdated_hr_dataset.json", "w") as f:
+with open("dataset/kaggle_formdated_hr_dataset.json", "w") as f:
     json.dump(dialogs, f, indent=2, ensure_ascii=False)
