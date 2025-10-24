@@ -90,11 +90,14 @@ def compute_metrics(eval_preds):
 
     if isinstance(preds, tuple):
         preds = preds[0]
+
     preds = np.array(preds)
     labels = np.array(labels)
 
     if preds.ndim > 2:
-        preds = preds.reshape(preds.shape[0], -1)
+        preds = np.argmax(preds, axis=-1)
+    elif preds.dtype != np.int64 and preds.dtype != np.int32:
+        preds = preds.astype(np.int64)
 
     labels = np.where(labels != -100, labels, tokenizer.pad_token_id)
 
@@ -102,10 +105,17 @@ def compute_metrics(eval_preds):
     decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
 
     result = metric.compute(predictions=decoded_preds, references=decoded_labels, use_stemmer=True)
-    result = {k: round(v.mid.fmeasure * 100, 2) for k, v in result.items()}
 
-    result["gen_len"] = np.mean([len(p.split()) for p in decoded_preds])
-    return result
+    processed_result = {}
+    for k, v in result.items():
+        if hasattr(v, "mid"):
+            processed_result[k] = round(v.mid.fmeasure * 100, 2)
+        else:
+            processed_result[k] = round(float(v) * 100, 2)
+
+    processed_result["gen_len"] = np.mean([len(p.split()) for p in decoded_preds])
+
+    return processed_result
 
 training_args = TrainingArguments(
     output_dir="./outputs/hr-flan-t5-lora",

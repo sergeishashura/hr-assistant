@@ -177,12 +177,12 @@ def test_gpt_model_pair(
 if __name__ == "__main__":
     # test_t5_model_pair(
     #     base_model="google/flan-t5-base",
-    #     peft_model="../models/flan-t5-05",
+    #     peft_model="../models/flan-t5-lora",
     #     questions_file="data/test_questions/test_questions.json",
     # )
 
      test_gpt_model_pair(
         base_model="openai-community/gpt2-medium",
-        peft_model="../models/hr-gpt-05",
+        peft_model="../models/hr-gpt-5",
         questions_file="data/test_questions/test_questions.json",
     )

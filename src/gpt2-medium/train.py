@@ -43,9 +43,9 @@ model = AutoModelForCausalLM.from_pretrained(
 model.to(device)
 
 lora_config = LoraConfig(
-    r=64,
+    r=32,
     lora_alpha=16,
-    target_modules=["c_attn", "c_proj"],  # правильные модули для GPT-2
+    target_modules=["attn.c_attn", "attn.c_proj", "mlp.c_fc", "mlp.c_proj"],
     lora_dropout=0.05,
     bias="none",
     task_type="CAUSAL_LM",
@@ -75,7 +75,7 @@ def preprocess(examples):
     )
 
 dataset = dataset.map(preprocess, batched=True, remove_columns=dataset.column_names)
-subset = dataset.select(range(int(len(dataset) * 0.05)))  # можно уменьшить на тесте
+subset = dataset.select(range(int(len(dataset) * 0.5)))  # можно уменьшить на тесте
 
 data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
 
@@ -84,7 +84,7 @@ training_args = TrainingArguments(
     gradient_accumulation_steps=4,
     learning_rate=2e-4,
     num_train_epochs=1,
-    output_dir="./outputs/hr-gpt-05",
+    output_dir="./outputs/hr-gpt-5",
     logging_steps=10,
     save_strategy="epoch",
     save_total_limit=2,
@@ -105,7 +105,7 @@ trainer = SFTTrainer(
 print("\nЗапускаем обучение...\n")
 trainer.train()
 
-save_dir = "./models/hr-gpt-05"
+save_dir = "./models/hr-gpt-5"
 os.makedirs(save_dir, exist_ok=True)
 model.save_pretrained(save_dir)
 tokenizer.save_pretrained(save_dir)
