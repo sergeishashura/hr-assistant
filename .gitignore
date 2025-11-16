@@ -1,0 +1,8 @@
+.env
+
+.hf_cache
+
+/dataset
+/outputs
+.venv/
+/models/gpt-2-medium-role

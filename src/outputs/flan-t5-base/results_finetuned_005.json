@@ -1,0 +1,77 @@
+[
+  {
+    "question": "Tell me about a time you had to learn something completely new quickly.",
+    "model": "fine-tuned",
+    "answer": "I was a teenager and I had to learn how to read a book."
+  },
+  {
+    "question": "Describe a time you handled a difficult situation professionally.",
+    "model": "fine-tuned",
+    "answer": "I handled a difficult situation professionally."
+  },
+  {
+    "question": "Where do you see yourself in 5 years?",
+    "model": "fine-tuned",
+    "answer": "sweden"
+  },
+  {
+    "question": "Tell me about a conflict you had with a coworker and how you resolved it.",
+    "model": "fine-tuned",
+    "answer": "I had a disagreement with my coworker about a new project. I asked him to fix it and he agreed."
+  },
+  {
+    "question": "What skills do you hope to develop in your next role?",
+    "model": "fine-tuned",
+    "answer": "a strong understanding of the world and its people"
+  },
+  {
+    "question": "What's the most significant change you've had to adapt to at work?",
+    "model": "fine-tuned",
+    "answer": "I'm a new employee and I'm trying to adapt to the changes."
+  },
+  {
+    "question": "How does this role fit into your career path?",
+    "model": "fine-tuned",
+    "answer": "This position is a key role in the development of the company’s business processes."
+  },
+  {
+    "question": "Tell me about a time you worked well within a team.",
+    "model": "fine-tuned",
+    "answer": "I worked well within a team."
+  },
+  {
+    "question": "What are your expectations from leadership in a company?",
+    "model": "fine-tuned",
+    "answer": "a strong sense of responsibility"
+  },
+  {
+    "question": "What motivates you to come to work every day?",
+    "model": "fine-tuned",
+    "answer": "a good job"
+  },
+  {
+    "question": "How do you motivate others in a leadership role?",
+    "model": "fine-tuned",
+    "answer": "You should be able to motivate them."
+  },
+  {
+    "question": "What tools or methods help you stay organized?",
+    "model": "fine-tuned",
+    "answer": "a planner"
+  },
+  {
+    "question": "How do you build trust with new teammates?",
+    "model": "fine-tuned",
+    "answer": "You need to build trust by sharing your experiences and sharing your goals."
+  },
+  {
+    "question": "Describe a time you led a project or team.",
+    "model": "fine-tuned",
+    "answer": "a leadership position"
+  },
+  {
+    "question": "Why do you want to work at our company?",
+    "model": "fine-tuned",
+    "answer": "to be a part of a team"
+  }
+]
