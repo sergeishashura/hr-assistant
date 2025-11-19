@@ -5,4 +5,5 @@
 /dataset
 /outputs
 .venv/
+venv/
 /models/gpt-2-medium-role

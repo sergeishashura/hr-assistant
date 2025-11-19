@@ -183,6 +183,6 @@ if __name__ == "__main__":
 
      test_gpt_model_pair(
         base_model="openai-community/gpt2-medium",
-        peft_model="../models/hr-gpt-5",
+        peft_model="../models/hr-gpt-5-old",
         questions_file="data/test_questions/test_questions.json",
     )
